@@ -1,0 +1,168 @@
+/* Wardrobe-spezifische Styles (Garderobe-Grid, Filter-Pills, Formular-Modal).
+   Tokens aus DESIGN.md / theme.css — keine eigenen Hex-Werte. */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.filter-pill {
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--color-accent);
+}
+
+.filter-pill--active {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.wardrobe-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .item-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .item-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .item-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.item-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item-card__image {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.15s ease;
+}
+
+.item-card__image:hover {
+  border-color: var(--color-accent);
+}
+
+.item-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.item-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.item-card__name {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.item-card__category {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.item-card__actions {
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.item-card__action {
+  flex: 1;
+  padding: var(--space-1) var(--space-2);
+  min-height: 40px;
+}
+
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  z-index: 200;
+}
+
+.wardrobe-form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.wardrobe-form__title {
+  font-size: 1.25rem;
+}
+
+.wardrobe-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.wardrobe-form__label {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.wardrobe-form__actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
