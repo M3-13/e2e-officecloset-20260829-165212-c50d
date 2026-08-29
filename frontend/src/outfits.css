@@ -1,0 +1,312 @@
+/* =========================================================================
+   Outfit-Creator & Outfit-Ansicht
+   Nutzt ausschließlich Tokens aus DESIGN.md / theme.css.
+   ========================================================================= */
+
+/* --- Creator-Layout: Auswahl links, Bühne rechts --- */
+.creator {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (max-width: 959px) {
+  .creator {
+    grid-template-columns: 1fr;
+  }
+}
+
+.creator__picker,
+.creator__stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.creator__picker {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+}
+
+/* --- Auswahl-Liste (Picker) --- */
+.picker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.picker__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-fg);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease;
+}
+
+.picker__item:hover {
+  border-color: var(--color-accent);
+}
+
+.picker__item--selected {
+  border-color: var(--color-accent);
+  background-color: rgba(201, 162, 75, 0.12);
+}
+
+.picker__item img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.picker__item span {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.picker__item small {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- Bühne (Bildzusammenstellung) --- */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-3);
+}
+
+.stage-item {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-card);
+}
+
+.stage-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.stage-item figcaption {
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.stage-item__remove {
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: rgba(18, 16, 13, 0.85);
+  color: var(--color-fg);
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* --- Formular im Creator --- */
+.creator__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.creator__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* --- Formular-Felder --- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.field__label {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Outfit-Grid (Ansicht) --- */
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+/* --- OutfitCard --- */
+.outfit-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.outfit-card__media {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.outfit-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+}
+
+.outfit-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.outfit-card__media:hover .outfit-card__img {
+  opacity: 0.85;
+}
+
+.outfit-card__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-muted);
+}
+
+.outfit-card__overflow {
+  position: absolute;
+  bottom: var(--space-1);
+  right: var(--space-1);
+  padding: var(--space-0) var(--space-1);
+  border-radius: var(--radius-pill);
+  background-color: rgba(18, 16, 13, 0.85);
+  color: var(--color-fg);
+  font-size: 0.75rem;
+}
+
+.outfit-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0);
+}
+
+.outfit-card__name {
+  font-size: 1.1rem;
+}
+
+.outfit-card__occasion {
+  display: inline-block;
+  align-self: flex-start;
+  padding: var(--space-0) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.outfit-card__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.outfit-card__actions .btn {
+  flex: 1;
+  padding: var(--space-1) var(--space-2);
+  min-height: 40px;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 8, 6, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  z-index: 200;
+}
+
+.modal {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+/* --- Outfit-Detailansicht --- */
+.outfit-view__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-2);
+}
+
+.outfit-view__item {
+  margin: 0;
+}
+
+.outfit-view__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.outfit-view__item figcaption {
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
